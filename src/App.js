@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import AddItemButton from './components/AddItem/AddItemButton';
+import List from './components/List';
+
+const tasks = [
+  {
+    key: 0,
+    title: 'Title',
+    priority: 'high',
+    description: 'Some description text',
+    deadline: 'deadline'
+  },
+  {
+    key: 1,
+    title: 'Title',
+    priority: 'low',
+    description: 'Some description text',
+    deadline: ''
+  },
+];
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <>
+      <header className='mb-2 p-2 flex justify-around text-orange-900'>
+        <h1 className='p-2 text-xl font-bold'>Planner</h1>
+        <AddItemButton />
       </header>
-    </div>
+      <div className="App">
+        <List tasks={tasks} />
+      </div>
+    </>
   );
 }
 
