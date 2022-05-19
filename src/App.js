@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import AddItemButton from './components/AddItem/AddItemButton';
 import List from './components/List';
 
@@ -18,15 +20,27 @@ const tasks = [
   },
 ];
 
+
 function App() {
+
+  const [tasksArray, setTasksArray] = useState(tasks);
+
+  const addItemHandler = item => {
+    const readyItem = {...item, key: tasksArray.length};
+    console.log(readyItem);
+    setTasksArray(prevTasksArray => {
+      return[readyItem, ...tasksArray];
+    });
+  };
+
   return (
     <>
       <header className='mb-2 p-2 flex justify-around text-orange-900'>
         <h1 className='p-2 text-xl font-bold'>Planner</h1>
-        <AddItemButton />
+        <AddItemButton onAddItem={addItemHandler} />
       </header>
       <div className="App">
-        <List tasks={tasks} />
+        <List tasks={tasksArray} />
       </div>
     </>
   );

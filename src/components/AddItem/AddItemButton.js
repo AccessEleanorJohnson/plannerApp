@@ -1,8 +1,9 @@
 import ReactDOM from 'react-dom';
 import { useState } from 'react';
-import AddItemModel from './AddItemModel';
+import AddItemModel from './AddItemModal';
+import PreviousMap from 'postcss/lib/previous-map';
 
-function AddItemButton () {
+function AddItemButton (props) {
     const [addButtonClicked, setAddButtonClicked] = useState(false);
     const clickHandler = () => {
         setAddButtonClicked(true);
@@ -12,10 +13,13 @@ function AddItemButton () {
         setAddButtonClicked(value);
     };
 
+    const takeItemHandler = (value) => {
+        props.onAddItem(value);
+    }
     return (
         <>
             <button className="py-2 px-4 border border-orange-900 rounded-md" onClick={clickHandler}>Add</button>
-            {addButtonClicked && ReactDOM.createPortal(<AddItemModel onClose={closeHandler}/>, document.getElementById('modal'))}
+            {addButtonClicked && ReactDOM.createPortal(<AddItemModel onClose={closeHandler} onTakeItem={takeItemHandler}/>, document.getElementById('modal'))}
         </>
         
     );
