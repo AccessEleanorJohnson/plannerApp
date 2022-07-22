@@ -4,7 +4,6 @@ function ItemDate (props) {
         date = `${props.date.toLocaleString('en-US', {day: '2-digit'})}/${props.date.toLocaleString('en-US', {month: '2-digit'})}/${props.date.getFullYear()}`;
     } else {
         date = props.date;
-        console.log(date + " else")
     }
     return (
         <p>{date}</p>
