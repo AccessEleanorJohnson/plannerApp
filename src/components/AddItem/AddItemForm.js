@@ -31,11 +31,20 @@ function AddItemForm (props) {
         e.preventDefault();
         props.onFinish(false);
 
+        let deadlineDate
+        const dateRegex = /[0-9]{4}-[0-9]{2}-[0-9]{2}/;
+        if(enteredDeadline.match(dateRegex)){
+            deadlineDate = new Date(enteredDeadline);
+        } else {
+            deadlineDate = '';
+        }
+        
+
         const newItem = {
             title: enteredTitle,
             priority: enteredPriority,
             description: enteredDescription,
-            deadline: enteredDeadline
+            deadline: deadlineDate
         }
         console.log(newItem);
 
@@ -57,7 +66,7 @@ function AddItemForm (props) {
                 <input className="block mb-2 p-1" id="priority" type="text" name="priority" onChange={priorityChangeHandler} />
 
                 <label className="" htmlFor="deadline">Deadline</label>
-                <input className="block mb-2 p-1" id="deadline" type="text" name="deadline" onChange={deadlineChangeHandler} />
+                <input className="block mb-2 p-1" id="deadline" type="date" name="deadline" onChange={deadlineChangeHandler} />
 
                 <button className="m-2 py-2 px-4 border border-orange-900 rounded-md" type="submit" >Submit</button>
                 <button className="m-2 py-2 px-4 border border-orange-900 rounded-md" type="button" onClick={clickHandler} >Cancel</button>

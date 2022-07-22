@@ -5,6 +5,7 @@ import PreviousMap from 'postcss/lib/previous-map';
 
 function AddItemButton (props) {
     const [addButtonClicked, setAddButtonClicked] = useState(false);
+
     const clickHandler = () => {
         setAddButtonClicked(true);
     };

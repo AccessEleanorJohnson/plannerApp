@@ -9,7 +9,7 @@ const tasks = [
     title: 'Title',
     priority: 'high',
     description: 'Some description text',
-    deadline: 'deadline'
+    deadline: new Date(2022, 3, 21),
   },
   {
     key: '1',
@@ -27,7 +27,6 @@ function App() {
 
   const addItemHandler = item => {
     const readyItem = {...item, key: tasksArray.length};
-    console.log(readyItem);
     setTasksArray(prevTasksArray => {
       return[readyItem, ...tasksArray];
     });

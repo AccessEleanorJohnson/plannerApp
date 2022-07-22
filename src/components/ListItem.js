@@ -1,3 +1,5 @@
+import ItemDate from "./ItemDate";
+
 function ListItem (props) {
     const item = props.item;
     const clickHandler = () => {
@@ -8,7 +10,7 @@ function ListItem (props) {
         <li className="mb-4 py-2 px-4 bg-orange-100 rounded-md text-orange-900">
             <div className="flex justify-between pb-2">
                 <h2 className="font-bold">{item.title}</h2>
-                <p className="">{item.deadline}</p>
+                <ItemDate className="" date={item.deadline}/>
                 <p>{item.priority}</p>    
             </div>
             
